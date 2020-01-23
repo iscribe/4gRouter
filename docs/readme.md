@@ -13,17 +13,10 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 static ip for eth0
 ```
-$ vim /etc/network/interfaces.d/eth0
+$ vim /etc/dhcpcd.conf
 
-# The internal network interface
-auto eth0
-iface eth0 inet static
-address 192.168.1.1
-netmask 255.255.255.0
+interface eth0
+  static ip_address 192.168.2.1/24
 ```
-
-dhcp for the 4g dongle interface
-```
-
 
 
