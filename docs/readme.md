@@ -25,4 +25,28 @@ $ sudo service dhcpcd restart
 ### dhcp server
 - install isc-dhcp-server
 
+- move the existing configuration file out of the way, but keep it as it containes good documentation
+```
+sudo mv /etc/dhcp/dhcpd.conf  /etc/dhcp/dhcpd.conf.ORIG
+```
+
+-- create a new configuration file with the following
+```
+vim /etc/dhcp/dhcpd.conf
+
+ddns-update-style none;
+option domain-name "4grouter";
+option domain-name-servers 8.8.8.8;
+default-lease-time 3600;
+max-lease-time 86400;
+authoritative;
+log-facility local7;
+
+# Configure service for local network 192.168.47.0 (the wireless AP)                    
+subnet 192.168.2.0  netmask 255.255.255.0 {
+    range 192.168.2.10 192.168.2.250;
+    option routers 192.168.2.1;
+}
+```
+
 
