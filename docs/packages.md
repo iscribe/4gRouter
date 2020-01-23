@@ -3,3 +3,4 @@
 - git
 - vim
 - iptables
+- isc-dhcp-server
